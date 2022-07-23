@@ -116,43 +116,25 @@ namespace BasicMath.Controllers
             return NoContent();
         }
 
-        [HttpGet("getFunctionExpression/{id}")]
-        public async Task <IEnumerable<BasicsMath>> Get(long id)
+        [HttpGet("getFunctionExpression/{expression}")]
+        public ActionResult<BasicsMath> GetFunctionExpression(string expression)
         {
-            if (_context.BasicMaths == null)
-            {
-                return Enumerable.Range(1, 1).Select(index => new BasicsMath
-                {
-                    FunctionExpression = "Não Apresenta isso no banco"
-                })
-                .ToArray();
-            }
+            var functions = new Functions();
 
-            var basicsMath = await _context.BasicMaths.FindAsync(id);
-
-            if (basicsMath == null)
+            var nameExpression = expression.ToLower();
+            
+            if (nameExpression.Equals("baskara"))
             {
-                return Enumerable.Range(1, 1).Select(index => new BasicsMath
-                {
-                    FunctionExpression = "Não Apresenta isso no banco"
-                })
-                .ToArray();
+                return Ok(functions.ShowFunction("bhaskara")); 
+
+            } else if(nameExpression.Equals("pitagoras"))
+            {
+                return Ok(functions.ShowFunction("pitagoras"));
+
             } else {
-                if (basicsMath.OperationName == "Baskara")
-                {
-                    return Enumerable.Range(1, 1).Select(index => new BasicsMath
-                    {
-                        FunctionExpression = "-b (+-) v(b**2 - 4ac)/2a"
-                    })
-                    .ToArray();
-                } else
-                {
-                    return Enumerable.Range(1, 1).Select(index => new BasicsMath
-                    {
-                        FunctionExpression = "22"
-                    })
-                    .ToArray();
-                }
+
+                return NotFound(functions.ShowFunction("nada"));
+
             }
         }
 
