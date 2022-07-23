@@ -8,10 +8,16 @@ function getItems() {
     .catch(error => console.error('Unable to get items.', error));
 }
 
-function getFunctionExpression(id) {
-  fetch(`${uri}/getFunctionExpression/${id}`)
+function getFunctionExpression(expression) {
+  fetch(`${uri}/getFunctionExpression/${expression}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
     .then(response => response.json())
-    .then(data => addP(data))
+    .then(data => showFunctionExpression(data))
     .catch(error => console.error('Erro: ', error))
 }
 
@@ -22,7 +28,6 @@ function addItem() {
     isComplete: false,
     operationName: addNameTextbox.value.trim()
   };
-  console.log(item);
   fetch(uri, {
     method: 'POST',
     headers: {
@@ -119,7 +124,7 @@ function _displayItems(data) {
 
     let giveFunction = button.cloneNode(false);
     giveFunction.innerText = 'Give Func';
-    giveFunction.setAttribute('onclick', `getFunctionExpression(${item.id})`)
+    giveFunction.setAttribute('onclick', `getFunctionExpression("${item.operationName}")`);
 
     let tr = tBody.insertRow();
     
@@ -141,7 +146,6 @@ function _displayItems(data) {
   todos = data;
 }
 
-function addP(data){
-  document.getElementById("lala").value = data[0].functionExpression;
-  document.getElementById("lala").innerText = data[0].functionExpression;
+function showFunctionExpression(data){
+  document.getElementById("lala").innerText = data.functionExpression;
 }
