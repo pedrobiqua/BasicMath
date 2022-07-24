@@ -147,5 +147,7 @@ function _displayItems(data) {
 }
 
 function showFunctionExpression(data){
-  document.getElementById("lala").innerText = data.functionExpression;
+  var paragraf = document.getElementById("lala");
+  paragraf.textContent = data.functionExpression;
+  
 }
