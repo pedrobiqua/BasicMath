@@ -11,11 +11,23 @@ namespace BasicMath
     {
         public BasicsMath ShowFunction(string operationName){		
 
-            if(operationName.Equals("bhaskara")){
+            if(operationName.Equals("bhaskara"))
+            {
                 return new Bhaskara();
-            }else if(operationName.Equals("pitagoras")){
+
+            }else if(operationName.Equals("pitagoras"))
+            {
                 return new Pitagoras();
-            }else return new FunctionError();
+
+            } else if( operationName.Equals("função afim") || operationName.Equals("linear function") )
+            {
+                return new LinearFunction();
+                
+            } else if(operationName.Equals("função quadratica") || operationName.Equals("quadratic function"))
+            {
+                return new QuadratcFunction();
+
+            } else return new FunctionError();
 	    }
     }
 }

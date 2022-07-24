@@ -131,9 +131,17 @@ namespace BasicMath.Controllers
             {
                 return Ok(functions.ShowFunction("pitagoras"));
 
-            } else
+            } else if(nameExpression.Equals("função afim"))
             {
-                return NotFound(functions.ShowFunction("nada"));
+                return Ok(functions.ShowFunction("linear function"));
+
+            } else if(nameExpression.Equals("função quadratica"))
+            {
+                return Ok(functions.ShowFunction("quadratic function"));
+
+            }  else
+            {
+                return NotFound(functions.ShowFunction("nothing"));
 
             }
         }
