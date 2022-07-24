@@ -131,8 +131,8 @@ namespace BasicMath.Controllers
             {
                 return Ok(functions.ShowFunction("pitagoras"));
 
-            } else {
-
+            } else
+            {
                 return NotFound(functions.ShowFunction("nada"));
 
             }
