@@ -25,7 +25,7 @@ namespace BasicMath
                 
             } else if(operationName.Equals("função quadratica") || operationName.Equals("quadratic function"))
             {
-                return new QuadratcFunction();
+                return new QuadraticFunction();
 
             } else return new FunctionError();
 	    }
