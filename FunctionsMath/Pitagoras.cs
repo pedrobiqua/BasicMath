@@ -11,7 +11,7 @@ namespace BasicMath.FunctionsMath
         public Pitagoras()
         {
             this.OperationName = "Pitagoras";
-            this.FunctionExpression = "Equação de Pitagoras";
+            this.FunctionExpression = "c² = a² + b²";
         }
     }
 }

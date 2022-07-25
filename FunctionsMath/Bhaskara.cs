@@ -11,7 +11,7 @@ namespace BasicMath.FunctionsMath
         public Bhaskara()
         {
             this.OperationName = "Baskara";
-            this.FunctionExpression = "Função de baskara";
+            this.FunctionExpression = "-b ± √b² - 4ac / 2a";
         }
     }
 }
