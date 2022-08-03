@@ -27,7 +27,38 @@ namespace BasicMath
             {
                 return new QuadraticFunction();
 
-            } else return new FunctionError();
+            } else return new FunctionError(operationName);
 	    }
+
+        public BasicsMath MakeOperations(string operationName, double a, double b, double c){
+
+            try
+            {
+                
+                if (operationName.ToLower().Equals("baskara"))
+                {
+                    return new Bhaskara().MakeMathAccount(operationName, a, b, c);
+
+                } else if(operationName.ToLower().Equals("pitagoras"))
+                {
+                    return new Pitagoras().MakeMathAccount(operationName, a, b, c);
+                } 
+                else 
+                {
+                    return new BasicsMath()
+                    {
+                        Messages = "Não foi possivel fazer a operação: " + operationName,
+                        Status = false
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                return new BasicsMath(){
+                    Messages = e.Message,
+                    Status = false
+                };
+            }
+        }
     }
 }

@@ -8,9 +8,11 @@ namespace BasicMath.FunctionsMath
 {
     public class FunctionError : BasicsMath
     {
-        public FunctionError()
+        public FunctionError(string operationName = "")
         {
             this.FunctionExpression = "Erro no nome da Equação matematica";
+            this.Messages = "Não foi encontrado essa operação: " + operationName;
+            this.Status = false;
         }
     }
 }

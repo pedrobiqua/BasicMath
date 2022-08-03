@@ -146,6 +146,26 @@ namespace BasicMath.Controllers
             }
         }
 
+        [HttpGet("getResult/")]
+        public ActionResult<BasicsMath> GetResult(string expression, double a, double b, double? c){
+
+            try
+            {
+                var functions = new Functions();
+                var nameExpression = expression.ToLower();
+
+                return Ok(functions.MakeOperations(expression, a, b, c??0));
+                
+            }
+            catch (System.Exception e)
+            {
+                return NotFound(new BasicsMath(){
+                    Messages = e.Message,
+                    Status = false
+                });
+            }
+        }
+
         private bool BasicsMathExists(long id)
         {
             return (_context.BasicMaths?.Any(e => e.Id == id)).GetValueOrDefault();
